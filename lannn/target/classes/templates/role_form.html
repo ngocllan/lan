@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Role Form</title>
+</head>
+<body>
+<div class="container">
+  <h1>Role Form</h1>
+  <form th:action="@{/roles/save}" th:object="${role}" method="post">
+    <div class="form-group">
+      <label>Role Name</label>
+      <input type="text" class="form-control" th:field="*{roleName}" placeholder="Role Name">
+    </div>
+    <div class="form-group">
+      <label>User</label>
+      <select class="form-control" th:field="*{user.id}">
+        <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.username}"></option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+</div>
+</body>
+</html>
